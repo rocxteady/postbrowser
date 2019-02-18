@@ -23,6 +23,7 @@ protocol NetworkRequestProtocol {
     
 }
 
+//T for response object model
 class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
     
     private var httpMethod: HTTPMethod = .get

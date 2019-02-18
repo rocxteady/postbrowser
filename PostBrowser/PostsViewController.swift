@@ -13,15 +13,6 @@ class PostsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let viewModel = PostsViewModel()
-        viewModel.getPosts { (posts, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            else {
-                print(posts)
-            }
-        }
     }
 
 

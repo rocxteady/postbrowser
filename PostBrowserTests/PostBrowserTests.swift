@@ -22,6 +22,22 @@ class PostBrowserTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let testExpectation = expectation(description: "Request")
+        let request = NetworkRequest<[Post]>()
+        request.path = "/posts"
+        request.start { (posts, error) in
+            if let error = error {
+                XCTAssert(false, error.localizedDescription)
+            }
+            else if posts == nil {
+                XCTAssert(false, "Expected Data!")
+            }
+            else {
+                XCTAssert(true)
+            }
+            testExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 15, handler: nil)
     }
 
     func testPerformanceExample() {
