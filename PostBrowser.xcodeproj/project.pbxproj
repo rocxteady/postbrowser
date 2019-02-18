@@ -14,6 +14,9 @@
 		7C600495221B0F450057CBB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C600493221B0F450057CBB9 /* LaunchScreen.storyboard */; };
 		7C6004A0221B0F450057CBB9 /* PostBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C60049F221B0F450057CBB9 /* PostBrowserTests.swift */; };
 		7C6004AB221B0F450057CBB9 /* PostBrowserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004AA221B0F450057CBB9 /* PostBrowserUITests.swift */; };
+		7C6004BB221B10350057CBB9 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004BA221B10350057CBB9 /* NetworkRequest.swift */; };
+		7C6004BD221B11660057CBB9 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004BC221B11660057CBB9 /* NetworkConstants.swift */; };
+		7C6004BF221B17B70057CBB9 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004BE221B17B70057CBB9 /* NetworkResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		7C6004A6221B0F450057CBB9 /* PostBrowserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostBrowserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6004AA221B0F450057CBB9 /* PostBrowserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBrowserUITests.swift; sourceTree = "<group>"; };
 		7C6004AC221B0F450057CBB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C6004BA221B10350057CBB9 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		7C6004BC221B11660057CBB9 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		7C6004BE221B17B70057CBB9 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 		7C600489221B0F440057CBB9 /* PostBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				7C6004B9221B0FBA0057CBB9 /* Networking */,
 				7C60048A221B0F440057CBB9 /* AppDelegate.swift */,
 				7C60048C221B0F440057CBB9 /* PostsViewController.swift */,
 				7C60048E221B0F440057CBB9 /* Main.storyboard */,
@@ -123,6 +130,16 @@
 				7C6004AC221B0F450057CBB9 /* Info.plist */,
 			);
 			path = PostBrowserUITests;
+			sourceTree = "<group>";
+		};
+		7C6004B9221B0FBA0057CBB9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7C6004BA221B10350057CBB9 /* NetworkRequest.swift */,
+				7C6004BC221B11660057CBB9 /* NetworkConstants.swift */,
+				7C6004BE221B17B70057CBB9 /* NetworkResponse.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C6004BD221B11660057CBB9 /* NetworkConstants.swift in Sources */,
+				7C6004BF221B17B70057CBB9 /* NetworkResponse.swift in Sources */,
 				7C60048D221B0F440057CBB9 /* PostsViewController.swift in Sources */,
+				7C6004BB221B10350057CBB9 /* NetworkRequest.swift in Sources */,
 				7C60048B221B0F440057CBB9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
