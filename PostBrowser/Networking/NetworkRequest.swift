@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias NetworkRequestCompletion<T: Decodable> = (_ response: T?, _ error: Error?) -> ()
+
 private enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
@@ -21,7 +23,7 @@ protocol NetworkRequestProtocol {
     
 }
 
-class NetworkRequest: NetworkRequestProtocol {
+class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
     
     private var httpMethod: HTTPMethod = .get
     
@@ -31,10 +33,32 @@ class NetworkRequest: NetworkRequestProtocol {
 
     var currentTask: URLSessionTask?
     
-    func start() {
+    func start(completion: @escaping NetworkRequestCompletion<T>) {
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        self.currentTask = session.dataTask(with: createURL()) { [weak self] (data, response, error) in
-            print(error?.localizedDescription)
+        self.currentTask = session.dataTask(with: createURL()) { (data, response, error) in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, nil)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let t = try decoder.decode(T.self, from: data)
+                DispatchQueue.main.async {
+                    completion(t, nil)
+                }
+            } catch let error {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
         }
         self.currentTask?.resume()
     }

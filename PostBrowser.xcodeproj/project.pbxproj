@@ -17,6 +17,7 @@
 		7C6004BB221B10350057CBB9 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004BA221B10350057CBB9 /* NetworkRequest.swift */; };
 		7C6004BD221B11660057CBB9 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004BC221B11660057CBB9 /* NetworkConstants.swift */; };
 		7C6004BF221B17B70057CBB9 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004BE221B17B70057CBB9 /* NetworkResponse.swift */; };
+		7C6004C2221B18A80057CBB9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004C1221B18A80057CBB9 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		7C6004BA221B10350057CBB9 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		7C6004BC221B11660057CBB9 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		7C6004BE221B17B70057CBB9 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		7C6004C1221B18A80057CBB9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				7C6004B9221B0FBA0057CBB9 /* Networking */,
+				7C6004C0221B188D0057CBB9 /* Models */,
 				7C60048A221B0F440057CBB9 /* AppDelegate.swift */,
 				7C60048C221B0F440057CBB9 /* PostsViewController.swift */,
 				7C60048E221B0F440057CBB9 /* Main.storyboard */,
@@ -140,6 +143,14 @@
 				7C6004BE221B17B70057CBB9 /* NetworkResponse.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		7C6004C0221B188D0057CBB9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7C6004C1221B18A80057CBB9 /* Post.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +287,7 @@
 				7C6004BD221B11660057CBB9 /* NetworkConstants.swift in Sources */,
 				7C6004BF221B17B70057CBB9 /* NetworkResponse.swift in Sources */,
 				7C60048D221B0F440057CBB9 /* PostsViewController.swift in Sources */,
+				7C6004C2221B18A80057CBB9 /* Post.swift in Sources */,
 				7C6004BB221B10350057CBB9 /* NetworkRequest.swift in Sources */,
 				7C60048B221B0F440057CBB9 /* AppDelegate.swift in Sources */,
 			);
