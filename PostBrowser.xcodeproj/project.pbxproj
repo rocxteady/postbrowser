@@ -18,6 +18,9 @@
 		7C6004BD221B11660057CBB9 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004BC221B11660057CBB9 /* NetworkConstants.swift */; };
 		7C6004BF221B17B70057CBB9 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004BE221B17B70057CBB9 /* NetworkResponse.swift */; };
 		7C6004C2221B18A80057CBB9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004C1221B18A80057CBB9 /* Post.swift */; };
+		7C6004C4221B1B1A0057CBB9 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004C3221B1B1A0057CBB9 /* PostsViewModel.swift */; };
+		7C6004C6221B1B470057CBB9 /* PostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004C5221B1B470057CBB9 /* PostsRequest.swift */; };
+		7C6004C8221B1DE60057CBB9 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004C7221B1DE60057CBB9 /* ErrorHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		7C6004BC221B11660057CBB9 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		7C6004BE221B17B70057CBB9 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		7C6004C1221B18A80057CBB9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		7C6004C3221B1B1A0057CBB9 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
+		7C6004C5221B1B470057CBB9 /* PostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRequest.swift; sourceTree = "<group>"; };
+		7C6004C7221B1DE60057CBB9 /* ErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,7 @@
 				7C6004BA221B10350057CBB9 /* NetworkRequest.swift */,
 				7C6004BC221B11660057CBB9 /* NetworkConstants.swift */,
 				7C6004BE221B17B70057CBB9 /* NetworkResponse.swift */,
+				7C6004C7221B1DE60057CBB9 /* ErrorHelper.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -149,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				7C6004C1221B18A80057CBB9 /* Post.swift */,
+				7C6004C5221B1B470057CBB9 /* PostsRequest.swift */,
+				7C6004C3221B1B1A0057CBB9 /* PostsViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -288,8 +297,11 @@
 				7C6004BF221B17B70057CBB9 /* NetworkResponse.swift in Sources */,
 				7C60048D221B0F440057CBB9 /* PostsViewController.swift in Sources */,
 				7C6004C2221B18A80057CBB9 /* Post.swift in Sources */,
+				7C6004C8221B1DE60057CBB9 /* ErrorHelper.swift in Sources */,
 				7C6004BB221B10350057CBB9 /* NetworkRequest.swift in Sources */,
 				7C60048B221B0F440057CBB9 /* AppDelegate.swift in Sources */,
+				7C6004C4221B1B1A0057CBB9 /* PostsViewModel.swift in Sources */,
+				7C6004C6221B1B470057CBB9 /* PostsRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

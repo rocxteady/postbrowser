@@ -42,22 +42,29 @@ class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
                 }
                 return
             }
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(nil, nil)
+            if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                guard let data = data else {
+                    DispatchQueue.main.async {
+                        completion(nil, ErrorHelper.crateError(type: .noData))
+                    }
+                    return
+                }
+                let decoder = JSONDecoder()
+                do {
+                    let t = try decoder.decode(T.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(t, nil)
+                    }
+                } catch let error {
+                    print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        completion(nil, ErrorHelper.crateError(type: .noData))
+                    }
                 }
                 return
             }
-            let decoder = JSONDecoder()
-            do {
-                let t = try decoder.decode(T.self, from: data)
-                DispatchQueue.main.async {
-                    completion(t, nil)
-                }
-            } catch let error {
-                DispatchQueue.main.async {
-                    completion(nil, error)
-                }
+            DispatchQueue.main.async {
+                completion(nil, ErrorHelper.crateError(type: .noData))
             }
         }
         self.currentTask?.resume()
