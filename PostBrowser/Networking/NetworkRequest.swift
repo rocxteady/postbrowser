@@ -35,8 +35,12 @@ class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
     var currentTask: URLSessionTask?
     
     func start(completion: @escaping NetworkRequestCompletion<T>) {
+        guard let url = createURL() else {
+            completion(nil, ErrorHelper.crateError(type: .noData))
+            return
+        }
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        self.currentTask = session.dataTask(with: createURL()) { (data, response, error) in
+        self.currentTask = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 DispatchQueue.main.async {
                     completion(nil, error)
@@ -75,7 +79,7 @@ class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
 
 extension NetworkRequest {
     
-    func createURL() -> URL {
+    func createURL() -> URL? {
         var urlComponents = URLComponents(string: NetworkConstants.baseURL)
         urlComponents?.path = self.path
         if self.httpMethod == .get, let parameters = self.parameters {
@@ -84,7 +88,7 @@ extension NetworkRequest {
                 return URLQueryItem(name: object.key, value: value)
             })
         }
-        return urlComponents!.url!
+        return urlComponents?.url
     }
     
 }
