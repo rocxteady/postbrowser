@@ -12,6 +12,8 @@ class PostsViewController: UITableViewController {
 
     private var viewModel = PostsViewModel()
     
+    private var activityIndicatorView = UIActivityIndicatorView(style: .gray)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,12 +23,18 @@ class PostsViewController: UITableViewController {
 
     private func setupUI() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.activityIndicatorView)
         self.tableView.register(UINib(nibName: PostCell.nibName, bundle: nil), forCellReuseIdentifier: PostCell.nibName)
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(getPosts), for: .valueChanged)
         registerForPreviewing(with: self, sourceView: self.tableView)
     }
     
-    private func getPosts() {
+    @objc private func getPosts() {
+        self.activityIndicatorView.startAnimating()
         self.viewModel.getPosts { [weak self] (error) in
+            self?.activityIndicatorView.stopAnimating()
+            self?.refreshControl?.endRefreshing()
             if let error = error {
                 let alertController = UIAlertController(title: NSLocalizedString("Error", comment: ""), message: error.localizedDescription, preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
