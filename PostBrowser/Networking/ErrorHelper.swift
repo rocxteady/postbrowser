@@ -25,7 +25,7 @@ enum ErrorType: Int {
 
 struct ErrorHelper {
 
-    private static let domain = "com.ulassancak.PostBrowser"
+    private static let domain = Bundle.main.bundleIdentifier! + ".error"
     
     static func crateError(type: ErrorType) -> Error {
         return NSError(domain: domain, code: type.rawValue, userInfo: [NSLocalizedDescriptionKey: type.description])
