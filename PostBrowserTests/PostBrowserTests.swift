@@ -19,14 +19,14 @@ class PostBrowserTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testURL() {
+    func testNetworkRequestURLWithGivenPath() {
         let request = NetworkRequest<[Post]>()
         request.path = "/posts"
         let url = request.createURL()
         XCTAssertNotNil(url, "URL is nil, check URL creation.")
     }
 
-    func testExample() {
+    func testRestResponseDataWithGivenPath() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let testExpectation = expectation(description: "Request")
@@ -46,12 +46,23 @@ class PostBrowserTests: XCTestCase {
         }
         waitForExpectations(timeout: 15, handler: nil)
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testPostsViewModelData() {
+        let testExpectation = expectation(description: "PostsRequest")
+        let postsViewModel = PostsViewModel()
+        postsViewModel.getPosts { (error) in
+            if let error = error {
+                XCTAssert(false, error.localizedDescription)
+            }
+            else if postsViewModel.posts == nil {
+                XCTAssert(false, "Expected Data!")
+            }
+            else {
+                XCTAssert(true)
+            }
+            testExpectation.fulfill()
         }
+        waitForExpectations(timeout: 15, handler: nil)
     }
 
 }

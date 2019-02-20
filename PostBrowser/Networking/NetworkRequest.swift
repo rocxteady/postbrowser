@@ -40,7 +40,8 @@ class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
             return
         }
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        self.currentTask = session.dataTask(with: url) { (data, response, error) in
+        self.currentTask = session.dataTask(with: url) { [weak self] (data, response, error) in
+            self?.endCurrentTask()
             if let error = error {
                 DispatchQueue.main.async {
                     completion(nil, error)
@@ -75,8 +76,17 @@ class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
         self.currentTask?.resume()
     }
     
+    func endCurrentTask() {
+        if let currentTask = self.currentTask {
+            if currentTask.state == .running || currentTask.state == .suspended {
+                currentTask.cancel()
+            }
+            self.currentTask = nil
+        }
+    }
 }
 
+// MARK: - NetworkRequest Creating URL
 extension NetworkRequest {
     
     func createURL() -> URL? {

@@ -8,13 +8,18 @@
 
 import Foundation
 
-typealias PostsRequestCompletionBlock = (_ posts: [Post]?, _ error: Error?) -> Void
+typealias BaseCompletionBlock = (_ error: Error?) -> Void
 
 class PostsViewModel {
     
-    func getPosts(completion: @escaping PostsRequestCompletionBlock) {
+    var posts: [Post]?
+    
+    func getPosts(completion: @escaping BaseCompletionBlock) {
         let request = PostsRequest()
-        request.start(completion: completion)
+        request.start { (posts, error) in
+            self.posts = posts
+            completion(error)
+        }
     }
     
 }
