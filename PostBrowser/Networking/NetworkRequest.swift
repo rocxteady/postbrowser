@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias BaseCompletionBlock = (_ error: Error?) -> Void
+
 typealias NetworkRequestCompletion<T: Decodable> = (_ response: T?, _ error: Error?) -> ()
 
 private enum HTTPMethod: String {
@@ -32,7 +34,7 @@ class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
     
     var parameters: [String : Any]?
 
-    var currentTask: URLSessionTask?
+    private(set) var currentTask: URLSessionTask?
     
     func start(completion: @escaping NetworkRequestCompletion<T>) {
         guard let url = createURL() else {
@@ -41,7 +43,7 @@ class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
         }
         let session = URLSession(configuration: URLSessionConfiguration.default)
         self.currentTask = session.dataTask(with: url) { [weak self] (data, response, error) in
-            self?.endCurrentTask()
+            self?.end()
             if let error = error {
                 DispatchQueue.main.async {
                     completion(nil, error)
@@ -76,7 +78,7 @@ class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
         self.currentTask?.resume()
     }
     
-    func endCurrentTask() {
+    func end() {
         if let currentTask = self.currentTask {
             if currentTask.state == .running || currentTask.state == .suspended {
                 currentTask.cancel()

@@ -19,6 +19,24 @@ class PostBrowserTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    func testEndingRequest() {
+        let request = PostsRequest()
+        request.start { (posts, error) in
+            if posts != nil {
+                XCTAssert(posts == nil, "The request was cancelled! There should not be data!")
+                XCTAssert(error != nil, "The request was cancelled! Error should not be nil!")
+                if let error = error as NSError? {
+                    XCTAssert(error.code == URLError.cancelled.rawValue, "The request was cancelled! Error code should be \"cancelled\"!")
+                }
+                else {
+                    XCTAssert(false, "Unrecognized error object!")
+                }
+            }
+        }
+        request.end()
+        XCTAssertNil(request.currentTask, "Current URL Task is not nil! Should be nil!")
+    }
+    
     func testNetworkRequestURLWithGivenPath() {
         let request = NetworkRequest<[Post]>()
         request.path = "/posts"
@@ -36,12 +54,7 @@ class PostBrowserTests: XCTestCase {
             if let error = error {
                 XCTAssert(false, error.localizedDescription)
             }
-            else if posts == nil {
-                XCTAssert(false, "Expected Data!")
-            }
-            else {
-                XCTAssert(true)
-            }
+            XCTAssertNotNil(posts, "Expected Data!")
             testExpectation.fulfill()
         }
         waitForExpectations(timeout: 15, handler: nil)
@@ -54,12 +67,7 @@ class PostBrowserTests: XCTestCase {
             if let error = error {
                 XCTAssert(false, error.localizedDescription)
             }
-            else if postsViewModel.posts == nil {
-                XCTAssert(false, "Expected Data!")
-            }
-            else {
-                XCTAssert(true)
-            }
+            XCTAssertNotNil(postsViewModel.posts, "Expected Data!")
             testExpectation.fulfill()
         }
         waitForExpectations(timeout: 15, handler: nil)

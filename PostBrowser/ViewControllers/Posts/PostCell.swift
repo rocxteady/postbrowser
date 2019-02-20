@@ -12,8 +12,8 @@ class PostCell: UITableViewCell {
 
     static let nibName = "PostCell"
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var bodyLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var bodyLabel: UILabel!
     
     func load(post: Post) {
         self.titleLabel.text = post.title

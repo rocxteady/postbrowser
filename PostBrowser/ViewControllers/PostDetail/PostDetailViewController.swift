@@ -14,8 +14,8 @@ class PostDetailViewController: UIViewController {
 
     var post: Post!
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var bodyTextView: UITextView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var bodyTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

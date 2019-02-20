@@ -22,7 +22,7 @@ class PostsViewController: UITableViewController {
     private func setupUI() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.tableView.register(UINib(nibName: PostCell.nibName, bundle: nil), forCellReuseIdentifier: PostCell.nibName)
-        self.registerForPreviewing(with: self, sourceView: self.tableView)
+        registerForPreviewing(with: self, sourceView: self.tableView)
     }
     
     private func getPosts() {
