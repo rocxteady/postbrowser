@@ -48,7 +48,7 @@ class PostsViewController: UITableViewController {
     
     private func detailViewController(for indexPath: IndexPath) -> UIViewController? {
         let postDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: PostDetailViewController.identifier) as? PostDetailViewController
-        postDetailViewController?.post = self.viewModel.posts![indexPath.row]
+        postDetailViewController?.viewModel = PostViewModel(post: self.viewModel.posts![indexPath.row])
         return postDetailViewController
     }
     

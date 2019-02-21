@@ -12,7 +12,7 @@ class PostDetailViewController: UIViewController {
     
     static let identifier = "PostDetailViewController"
 
-    var post: Post!
+    var viewModel: PostViewModel!
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var bodyTextView: UITextView!
@@ -25,8 +25,8 @@ class PostDetailViewController: UIViewController {
     }
 
     private func loadPost() {
-        self.titleLabel.text = post.title
-        self.bodyTextView.text = post.body
+        self.titleLabel.text = self.viewModel.post.title
+        self.bodyTextView.text = self.viewModel.post.body
     }
 
 }

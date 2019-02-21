@@ -23,6 +23,7 @@
 		7C6004C4221B1B1A0057CBB9 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004C3221B1B1A0057CBB9 /* PostsViewModel.swift */; };
 		7C6004C6221B1B470057CBB9 /* PostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004C5221B1B470057CBB9 /* PostsRequest.swift */; };
 		7C6004C8221B1DE60057CBB9 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004C7221B1DE60057CBB9 /* ErrorHelper.swift */; };
+		EB1D22EC221E96DA00E833FA /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D22EB221E96DA00E833FA /* PostViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		7C6004C3221B1B1A0057CBB9 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		7C6004C5221B1B470057CBB9 /* PostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRequest.swift; sourceTree = "<group>"; };
 		7C6004C7221B1DE60057CBB9 /* ErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
+		EB1D22EB221E96DA00E833FA /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				7C6004C1221B18A80057CBB9 /* Post.swift */,
 				7C6004C5221B1B470057CBB9 /* PostsRequest.swift */,
 				7C6004C3221B1B1A0057CBB9 /* PostsViewModel.swift */,
+				EB1D22EB221E96DA00E833FA /* PostViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				7C6004C8221B1DE60057CBB9 /* ErrorHelper.swift in Sources */,
 				7C6004BB221B10350057CBB9 /* NetworkRequest.swift in Sources */,
 				7C60048B221B0F440057CBB9 /* AppDelegate.swift in Sources */,
+				EB1D22EC221E96DA00E833FA /* PostViewModel.swift in Sources */,
 				7C6004C4221B1B1A0057CBB9 /* PostsViewModel.swift in Sources */,
 				7C6004C6221B1B470057CBB9 /* PostsRequest.swift in Sources */,
 				7C41BE78221C5ECF0054327A /* PostCell.swift in Sources */,
