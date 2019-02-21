@@ -40,9 +40,7 @@ class PostsViewController: UITableViewController {
                 alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
                 self?.present(alertController, animated: true, completion: nil)
             }
-            else {
-                self?.tableView.reloadData()
-            }
+            self?.tableView.reloadData()
         }
     }
     

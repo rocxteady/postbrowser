@@ -33,6 +33,10 @@ class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
     var path: String = ""
     
     var parameters: [String : Any]?
+    
+    var shouldReadCache = true
+    
+    var cacheKey = "default"
 
     private(set) var currentTask: URLSessionTask?
     
@@ -42,38 +46,56 @@ class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
             return
         }
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        self.currentTask = session.dataTask(with: url) { [weak self] (data, response, error) in
-            self?.end()
-            if let error = error {
-                DispatchQueue.main.async {
-                    completion(nil, error)
+        self.currentTask = session.dataTask(with: url) { (data, response, error) in
+            self.end()
+            func complete(responseModel: T?, error: Error?) {
+                if responseModel == nil && self.shouldReadCache {
+                    do {
+                        let decoder = JSONDecoder()
+                        if let cacheData = try self.readFromCache() {
+                            let t = try decoder.decode(T.self, from: cacheData)
+                            DispatchQueue.main.async {
+                                completion(t, error)
+                            }
+                        }
+                        else {
+                            DispatchQueue.main.async {
+                                completion(nil, error)
+                            }
+                        }
+                    } catch let error {
+                        DispatchQueue.main.async {
+                            completion(nil, error)
+                        }
+                    }
                 }
+                else {
+                    DispatchQueue.main.async {
+                        completion(responseModel, error)
+                    }
+                }
+            }
+            if let error = error {
+                complete(responseModel: nil, error: error)
                 return
             }
             if let response = response as? HTTPURLResponse, response.statusCode == 200 {
                 guard let data = data else {
-                    DispatchQueue.main.async {
-                        completion(nil, ErrorHelper.crateError(type: .noData))
-                    }
+                    complete(responseModel: nil, error: ErrorHelper.crateError(type: .noData))
                     return
                 }
                 let decoder = JSONDecoder()
                 do {
                     let t = try decoder.decode(T.self, from: data)
-                    DispatchQueue.main.async {
-                        completion(t, nil)
-                    }
+                    try self.writeResponseData(data: data)
+                    complete(responseModel: t, error: nil)
                 } catch let error {
                     print(error.localizedDescription)
-                    DispatchQueue.main.async {
-                        completion(nil, ErrorHelper.crateError(type: .noData))
-                    }
+                    complete(responseModel: nil, error: ErrorHelper.crateError(type: .noData))
                 }
                 return
             }
-            DispatchQueue.main.async {
-                completion(nil, ErrorHelper.crateError(type: .noData))
-            }
+            complete(responseModel: nil, error: ErrorHelper.crateError(type: .noData))
         }
         self.currentTask?.resume()
     }
@@ -85,6 +107,14 @@ class NetworkRequest<T: Decodable>: NetworkRequestProtocol {
             }
             self.currentTask = nil
         }
+    }
+    
+    private func writeResponseData(data: Data) throws {
+        try CacheManager.sharedManager.write(data: data, with: self.cacheKey)
+    }
+    
+    private func readFromCache() throws -> Data? {
+        return try CacheManager.sharedManager.read(from: self.cacheKey)
     }
 }
 
