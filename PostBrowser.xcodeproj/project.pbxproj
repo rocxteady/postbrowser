@@ -24,6 +24,7 @@
 		7C6004C6221B1B470057CBB9 /* PostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004C5221B1B470057CBB9 /* PostsRequest.swift */; };
 		7C6004C8221B1DE60057CBB9 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6004C7221B1DE60057CBB9 /* ErrorHelper.swift */; };
 		EB1D22EC221E96DA00E833FA /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D22EB221E96DA00E833FA /* PostViewModel.swift */; };
+		EB1D22EE221E9AEC00E833FA /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D22ED221E9AEC00E833FA /* CacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		7C6004C5221B1B470057CBB9 /* PostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRequest.swift; sourceTree = "<group>"; };
 		7C6004C7221B1DE60057CBB9 /* ErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
 		EB1D22EB221E96DA00E833FA /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		EB1D22ED221E9AEC00E833FA /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				7C60048A221B0F440057CBB9 /* AppDelegate.swift */,
+				EB1D22ED221E9AEC00E833FA /* CacheManager.swift */,
 				7C6004B9221B0FBA0057CBB9 /* Networking */,
 				7C6004C0221B188D0057CBB9 /* Models */,
 				7C41BE80221DB2350054327A /* ViewControllers */,
@@ -332,6 +335,7 @@
 				7C41BE7D221DAAC30054327A /* PostDetailViewController.swift in Sources */,
 				7C6004C2221B18A80057CBB9 /* Post.swift in Sources */,
 				7C6004C8221B1DE60057CBB9 /* ErrorHelper.swift in Sources */,
+				EB1D22EE221E9AEC00E833FA /* CacheManager.swift in Sources */,
 				7C6004BB221B10350057CBB9 /* NetworkRequest.swift in Sources */,
 				7C60048B221B0F440057CBB9 /* AppDelegate.swift in Sources */,
 				EB1D22EC221E96DA00E833FA /* PostViewModel.swift in Sources */,
